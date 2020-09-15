@@ -21,9 +21,10 @@ namespace LoggingKata
             // Log and error if you get 0 lines and a warning if you get 1 line
             var lines = File.ReadAllLines(csvPath);
 
-            logger.LogInfo($"Lines: {lines[0]}");
-            
-            if(lines.Count() == 0)
+            logger.LogInfo("Begin parsing");
+            //logger.LogInfo($"Lines: {lines[0]}");
+
+            if (lines.Count() == 0)
             {
                 logger.LogError("0 lines read from CSV file");
             }
@@ -73,7 +74,7 @@ namespace LoggingKata
                 }
             }
 
-            Console.WriteLine($"{tacoBellA.Name} and {tacoBellB.Name} are the farthest apart.");
+            Console.WriteLine($"The two Alabama Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}.");
 
             // Create a new corA Coordinate with your locA's lat and long
 
