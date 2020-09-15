@@ -30,14 +30,17 @@ namespace LoggingKata.Test
             //       each representing a TacoBell location
 
             //Arrange
+            var test = new TacoParser();
 
             //Act
+            var actual = test.Parse(line);
 
             //Assert
+            Assert.Equal(actual, expected);
         }
 
 
-        //TODO: Create a test ShouldParseLatitude
+        public void ShouldParseLongitude(string line, double expected)
 
     }
 }
