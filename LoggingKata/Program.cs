@@ -73,9 +73,10 @@ namespace LoggingKata
                     }
                 }
             }
-            double milesDistance = distance / 1609.344;
 
-            Console.WriteLine($"The two Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}. They're {Math.Round(milesDistance, 2)} miles apart.");
+            var direction = TacoParser.GetDirection(tacoBellA.Location, tacoBellB.Location);
+
+            Console.WriteLine($"The two Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}. They're {Math.Round((distance / 1609.344), 2)} miles apart, and {tacoBellB.Name} is {direction} from {tacoBellA.Name}.");
 
             ITrackable tacoBellC = null;
             ITrackable tacoBellD = null;
@@ -100,9 +101,10 @@ namespace LoggingKata
                     }
                 }
             }
-            double shortMilesDistance = shortDistance / 1609.344;
 
-            Console.WriteLine($"The two Taco Bells with the shortest distance between them are {tacoBellC.Name} and {tacoBellD.Name}. They're {Math.Round(shortMilesDistance, 2)} miles apart.");
+            var shortDirection = TacoParser.GetDirection(tacoBellC.Location, tacoBellD.Location);
+
+            Console.WriteLine($"The two Taco Bells with the shortest distance between them are {tacoBellC.Name} and {tacoBellD.Name}. They're {Math.Round((shortDistance / 1609.344), 2)} miles apart, and {tacoBellD.Name} is {shortDirection} from {tacoBellC.Name}.");
 
             // Create a new corA Coordinate with your locA's lat and long
 

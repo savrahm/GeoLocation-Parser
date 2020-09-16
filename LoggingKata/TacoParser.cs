@@ -1,4 +1,6 @@
-﻿namespace LoggingKata
+﻿using System;
+
+namespace LoggingKata
 {
     /// <summary>
     /// Parses a POI file to locate all the Taco Bells
@@ -43,6 +45,53 @@
             // Since it conforms to ITrackable
 
             return tb;
+        }
+
+        public enum Direction
+        {
+            North = 0,
+            South = 4,
+            East = 6,
+            West = 2,
+            Northeast = 7,
+            Northwest = 1,
+            Southeast = 5,
+            Southwest = 3,
+            Undefined = -1
+        }
+
+        public static Direction GetDirection(Point p1, Point p2)
+        {
+            double rad = Math.Atan2(p2.Latitude - p1.Latitude, p2.Longitude - p1.Longitude);
+
+            // Ajust result to be between 0 to 2*Pi
+            if (rad < 0)
+                rad = rad + (2 * Math.PI);
+
+            var deg = rad * (180 / Math.PI);
+
+            if (deg >= 0 && deg <= 45)
+                return Direction.East;
+            else if (deg > 45 && deg <= 90)
+                return Direction.Northeast;
+            else if (deg > 90 && deg <= 135)
+                return Direction.North;
+            else if (deg > 135 && deg <= 180)
+                return Direction.Northwest;
+            else if (deg > 180 && deg <= 225)
+                return Direction.West;
+            else if (deg > 225 && deg <= 270)
+                return Direction.Southwest;
+            else if (deg > 270 && deg <= 315)
+                return Direction.South;
+            else if (deg > 315 && deg < 360)
+                return Direction.Southeast;
+            else
+            {
+                Console.WriteLine($"{deg} is being returned as the degree of the angle for the direction");
+                return Direction.Undefined;
+            }
+            
         }
     }
 }
