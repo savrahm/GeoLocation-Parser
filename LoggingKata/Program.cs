@@ -67,40 +67,42 @@ namespace LoggingKata
 
                     if(corA.GetDistanceTo(corB) > distance)
                     {
-                        distance = corA.GetDistanceTo(corB) / 1609.344;
+                        distance = corA.GetDistanceTo(corB);
                         tacoBellA = locA;
                         tacoBellB = locB;
                     }
                 }
             }
+            double milesDistance = distance / 1609.344;
 
-            Console.WriteLine($"The two Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}, which are {Math.Round(distance, 2)} miles apart.");
+            Console.WriteLine($"The two Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}. They're {Math.Round(milesDistance, 2)} miles apart.");
 
             ITrackable tacoBellC = null;
             ITrackable tacoBellD = null;
 
             double shortDistance = 9999999999999999999;
 
-            for (int i = 0; i < locations.Length; i++)
+            for (int j = 0; j < locations.Length; j++)
             {
-                var locC = locations[i];
+                var locC = locations[j];
                 var corC = new GeoCoordinate(locC.Location.Latitude, locC.Location.Longitude);
 
-                for (int x = 1; x < locations.Length; x++)
+                for (int y = 1; y < locations.Length; y++)
                 {
-                    var locD = locations[x];
+                    var locD = locations[y];
                     var corD = new GeoCoordinate(locD.Location.Latitude, locD.Location.Longitude);
 
                     if (corC.GetDistanceTo(corD) < shortDistance && corC.GetDistanceTo(corD) != 0)
                     {
-                        shortDistance = corC.GetDistanceTo(corD) / 1609.344;
+                        shortDistance = corC.GetDistanceTo(corD);
                         tacoBellC = locC;
                         tacoBellD = locD;
                     }
                 }
             }
+            double shortMilesDistance = shortDistance / 1609.344;
 
-            Console.WriteLine($"The two Taco Bells with the shortest distance between them are {tacoBellC.Name} and {tacoBellD.Name}, which are {Math.Round(shortDistance, 2)} miles apart.");
+            Console.WriteLine($"The two Taco Bells with the shortest distance between them are {tacoBellC.Name} and {tacoBellD.Name}. They're {Math.Round(shortMilesDistance, 2)} miles apart.");
 
             // Create a new corA Coordinate with your locA's lat and long
 
