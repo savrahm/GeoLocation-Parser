@@ -76,7 +76,21 @@ namespace LoggingKata
 
             var direction = TacoParser.GetDirection(tacoBellA.Location, tacoBellB.Location);
 
-            Console.WriteLine($"The two Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}. They're {Math.Round((distance / 1609.344), 2)} miles apart, and {tacoBellB.Name} is {direction} from {tacoBellA.Name}.");
+            Console.WriteLine(".");
+            Console.WriteLine(".");
+            Console.WriteLine(".");
+            Console.WriteLine("========== F A R T H E S T ==========");
+            Console.WriteLine("");
+            Console.WriteLine($"The two Taco Bells with the largest distance between them are {tacoBellA.Name} and {tacoBellB.Name}."); 
+            Console.WriteLine("");
+            Console.WriteLine("Distance apart:");
+            Console.WriteLine($"They are {Math.Round((distance / 1609.344), 2)} miles apart.");
+            Console.WriteLine("");
+            Console.WriteLine("Direction:");
+            Console.WriteLine($"{tacoBellB.Name} is {direction} from {tacoBellA.Name}");
+            //Console.WriteLine(".");
+            //Console.WriteLine(".");
+            //Console.WriteLine(".");
 
             ITrackable tacoBellC = null;
             ITrackable tacoBellD = null;
@@ -104,7 +118,22 @@ namespace LoggingKata
 
             var shortDirection = TacoParser.GetDirection(tacoBellC.Location, tacoBellD.Location);
 
-            Console.WriteLine($"The two Taco Bells with the shortest distance between them are {tacoBellC.Name} and {tacoBellD.Name}. They're {Math.Round((shortDistance / 1609.344), 2)} miles apart, and {tacoBellD.Name} is {shortDirection} from {tacoBellC.Name}.");
+            Console.WriteLine(".");
+            Console.WriteLine(".");
+            Console.WriteLine(".");
+            Console.WriteLine("==========CLOSEST==========");
+            Console.WriteLine("");
+            Console.WriteLine($"The two Taco Bells with the shortest distance between them are {tacoBellC.Name} and {tacoBellD.Name}.");
+            Console.WriteLine("");
+            Console.WriteLine("Distance apart:");
+            Console.WriteLine($"They're {Math.Round((shortDistance / 1609.344), 2)} miles apart.");
+            Console.WriteLine("");
+            Console.WriteLine("Direction:");
+            Console.WriteLine($"{tacoBellD.Name} is {shortDirection} from {tacoBellC.Name}");
+            Console.WriteLine(".");
+            Console.WriteLine(".");
+            Console.WriteLine(".");
+            Console.WriteLine("====================");
 
             // Create a new corA Coordinate with your locA's lat and long
 
