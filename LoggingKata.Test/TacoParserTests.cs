@@ -1,5 +1,8 @@
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using System;
+using System.ComponentModel;
 using Xunit;
+using static LoggingKata.TacoParser;
 
 namespace LoggingKata.Test
 {
@@ -58,6 +61,29 @@ namespace LoggingKata.Test
             //Assert
             Assert.Equal(actual, expected);
         }
+           
+        [Theory]
+        [InlineData("33.748550,-84.391502, Fake Atlanta Taco Bell", "34.021650, -84.361670, Fake Roswell Taco Bell", "northeast")]
+        [InlineData("33.5778631,-101.8551665, Fake Lubbock Taco Bell", "33.5873164, -102.37796, Fake Levelland Taco Bell", "northwest")]
+        [InlineData("33.5778631,-101.8551665, Fake Lubbock Taco Bell", "30.531974, -91.150378, Fake Baton Rouge Taco Bell", "southeast")]
+        [InlineData("33.5778631,-101.8551665, Fake Lubbock Taco Bell", "38.256081, -85.751572, Fake Louisville Taco Bell", "northeast")]
+        [InlineData("33.5778631,-101.8551665, Fake Lubbock Taco Bell", "45.516020, -122.681430, Fake Portland Taco Bell", "northwest")]
+        [InlineData("-27.470933,153.023502, Fake Brisbane Taco Bell", "45.516020, -122.681430, Fake Portland Taco Bell", "northeast")]
+        [InlineData("38.256081,-85.751572,Fake Louisville Taco Bell", "52.628101, 1.299349, Fake Norwich Taco Bell", "northeast")]
+        public void DirectionChecker(string line, string line2, string expected)
+        {
+            //Arrange
+            var test1 = new TacoParser();
+            var parsed1 = test1.Parse(line).Location;
 
+            var test2 = new TacoParser();
+            var parsed2 = test2.Parse(line2).Location;
+
+            //Act
+            var actual = TacoParser.GetDirection(parsed1, parsed2);
+
+            //Assert
+            Assert.Equal(actual, expected);
+        }
     }
 }

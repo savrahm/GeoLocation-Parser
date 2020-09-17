@@ -146,8 +146,8 @@ namespace LoggingKata
 
             // Once you've looped through everything, you've found the two Taco Bells farthest away from each other.
 
+            
 
-
-        }
+    }
     }
 }
